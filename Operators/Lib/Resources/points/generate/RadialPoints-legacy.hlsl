@@ -1,5 +1,5 @@
 #include "shared/hash-functions.hlsl"
-#include "shared/point.hlsl"
+#include "shared/point-old.hlsl"
 #include "shared/quat-functions.hlsl"
 #include "shared/bias-functions.hlsl"
 
@@ -22,16 +22,15 @@ cbuffer Params : register(b0)
     float2 __padding4;
     
     float3 Axis;
-    float PointScale;
+    float W;
 
-    float ScaleOffset;
+    float WOffset;
     float CloseCircle;    
     float2 __padding5;
 
     float3 OrientationAxis;
     float1 OrientationAngle;
 
-    float4 Color;
     float2 GainAndBias;
 
 }
@@ -63,30 +62,44 @@ void main(uint3 i : SV_DispatchThreadID)
     if(i.x >= pointCount)
         return;
 
+    uint index = i.x; 
     bool closeCircle =  CloseCircle > 0.5;
     float angleStepCount = closeCircle ? (pointCount -2) : pointCount;
 
-    float f = (float)(i.x)/angleStepCount;
-    f = ApplyBiasAndGain(f, GainAndBias.x, GainAndBias.y);
+    float ff = (float)(index)/angleStepCount;
+    float f = ApplyBiasAndGain(ff, GainAndBias.x, GainAndBias.y);
 
     float l = Radius + RadiusOffset * f;
-    float angle = (StartAngle * 3.141578/180 + Cycles * 2 * 3.141578 * f);
+    float angle = (StartAngle * 3.141578/180 + Cycles * 2 *3.141578 * f);
     float3 up = Axis.y > 0.7 ? float3(0,0,1) :  float3(0,1,0);
     float3 direction = normalize(cross(Axis, up));
 
     float3 v2 = RotatePointAroundAxis(direction * l , Axis, angle);
 
+    float3 c= Center + CenterOffset * f;
+    float3 v =  v2 + c;
+
+    
+    ResultPoints[index].Position = v;
+    ResultPoints[index].W = (closeCircle && index == pointCount -1)
+                          ? NAN
+                          : W + WOffset * f;
+
+    float4 orientation = qFromAngleAxis(3.141578/2 * 1, normalize(OrientationAxis));
+
+    orientation = qMul( orientation, qFromAngleAxis( (OrientationAngle) / 180 * 3.141578, float3(1,0,0)));
+
     float4 lookat = qLookAt(Axis, up);
+
+    float4 quat = qMul(   orientation, qFromAngleAxis(angle, normalize(Axis)));
 
     float4 spin = qFromAngleAxis( (OrientationAngle) / 180 * 3.141578, normalize(OrientationAxis));
     float4 spin2 = qFromAngleAxis( angle, float3(Axis));
 
-    ResultPoints[i.x].Position = v2 + Center + CenterOffset * f;
-    ResultPoints[i.x].Weight = (closeCircle && i.x == pointCount -1) ? NAN : 1.0;
-    ResultPoints[i.x].Size = PointScale + ScaleOffset * f;
-    ResultPoints[i.x].Rotation = qMul(normalize(qMul(spin2, lookat)), spin);
-    ResultPoints[i.x].Color = Color;
-    ResultPoints[i.x].Weight2 = 1;
+    ResultPoints[index].Rotation = qMul(normalize(qMul(spin2, lookat)), spin);
+    ResultPoints[index].Color = 1;
+    ResultPoints[index].Stretch = 1;
+    ResultPoints[index].Selected = 1;
 
 }
 

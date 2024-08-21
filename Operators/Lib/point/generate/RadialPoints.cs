@@ -7,12 +7,12 @@ using T3.Core.Operator.Slots;
 
 namespace lib.point.generate
 {
-	[Guid("3352d3a1-ab04-4d0a-bb43-da69095b73fd")]
+	[Guid("94753df7-3c3e-493e-8b45-b5ac0b806a0c")]
     public class RadialPoints : Instance<RadialPoints>
 ,ITransformable
     {
 
-        [Output(Guid = "d7605a96-adc6-4a2b-9ba4-33adef3b7f4c")]
+        [Output(Guid = "ca675627-a29a-4eb8-8a5d-1d3c51baf7ac")]
         public readonly TransformCallbackSlot<T3.Core.DataTypes.BufferWithViews> OutBuffer = new();
 
         public RadialPoints()
@@ -25,48 +25,51 @@ namespace lib.point.generate
         IInputSlot ITransformable.ScaleInput => null;
 
         public Action<Instance, EvaluationContext> TransformCallback { get; set; }
-        
-        [Input(Guid = "b654ffe2-d46e-4a62-89b3-a9692d5c6481")]
-        public readonly InputSlot<int> Count = new();
 
-        [Input(Guid = "acce4779-56d6-47c4-9c52-874fca91a3a1")]
-        public readonly InputSlot<float> Radius = new();
+        [Input(Guid = "0c422075-7a67-47fa-8d0b-52a22d2e0b16")]
+        public readonly InputSlot<int> Count = new InputSlot<int>();
 
-        [Input(Guid = "13cbb509-f90c-4ae7-a9d3-a8fc907794e3")]
-        public readonly InputSlot<float> RadiusOffset = new();
+        [Input(Guid = "09204a70-5fde-45e8-aeaf-f7656f8105e8")]
+        public readonly InputSlot<float> Radius = new InputSlot<float>();
 
-        [Input(Guid = "ca84209e-d821-40c6-b23c-38fc4bbd47b0")]
-        public readonly InputSlot<System.Numerics.Vector3> Center = new();
+        [Input(Guid = "21f9c645-2497-4a62-bc57-03ad9b5c3bba")]
+        public readonly InputSlot<float> RadiusOffset = new InputSlot<float>();
 
-        [Input(Guid = "f6986f68-851b-4cd1-ae59-bf189aa1698e")]
-        public readonly InputSlot<System.Numerics.Vector3> Offset = new();
+        [Input(Guid = "75677a27-97f9-4bd4-8685-9030a9cf376e")]
+        public readonly InputSlot<System.Numerics.Vector3> Center = new InputSlot<System.Numerics.Vector3>();
 
-        [Input(Guid = "5a3347a2-ba87-4b38-a1a8-94bd0ef70f48")]
-        public readonly InputSlot<float> StartAngle = new();
+        [Input(Guid = "92ef8215-aea2-46cc-96b8-f26df89fc6ea")]
+        public readonly InputSlot<System.Numerics.Vector3> Offset = new InputSlot<System.Numerics.Vector3>();
 
-        [Input(Guid = "94b2a118-f760-4043-933c-31283e6e7006")]
-        public readonly InputSlot<float> Cycles = new();
+        [Input(Guid = "f7f7e4fc-f7bc-44e9-a655-bee3153b18ae")]
+        public readonly InputSlot<float> StartAngle = new InputSlot<float>();
 
-        [Input(Guid = "76124db6-4b89-4d7c-bd25-2ebf95b1c141")]
-        public readonly InputSlot<bool> CloseCircleLine = new();
+        [Input(Guid = "e36118a3-b0fb-4237-bbca-9b4d3687ba54")]
+        public readonly InputSlot<float> Cycles = new InputSlot<float>();
 
-        [Input(Guid = "6df5829e-a534-4620-bcd5-9324f94b4f54")]
-        public readonly InputSlot<System.Numerics.Vector3> Axis = new();
+        [Input(Guid = "34a9fac5-ed23-4c3a-90af-ac7cc79803fd")]
+        public readonly InputSlot<System.Numerics.Vector3> Axis = new InputSlot<System.Numerics.Vector3>();
 
-        [Input(Guid = "3ee710be-8954-431b-8d3a-38f7f03f0f02")]
-        public readonly InputSlot<float> W = new();
+        [Input(Guid = "70781fb1-8851-49a6-a829-7cd082053377")]
+        public readonly InputSlot<bool> CloseCircleLine = new InputSlot<bool>();
 
-        [Input(Guid = "526cf26b-6cf6-4cba-be2a-4819c2a422bf")]
-        public readonly InputSlot<float> WOffset = new();
+        [Input(Guid = "7005ac18-4dbf-4f77-a6a8-863b877e7cf5")]
+        public readonly InputSlot<float> PointScale = new InputSlot<float>();
 
-        [Input(Guid = "01a62754-7629-487d-a43a-f0cd2fbfafce")]
-        public readonly InputSlot<System.Numerics.Vector3> OrientationAxis = new();
+        [Input(Guid = "7740ab78-a000-4c21-96a8-8f0ed810a15f")]
+        public readonly InputSlot<float> ScaleOffset = new InputSlot<float>();
 
-        [Input(Guid = "cd917c3d-489e-4e4d-b5dc-eacc846d82ef")]
-        public readonly InputSlot<float> OrientationAngle = new();
+        [Input(Guid = "2dcf997e-e38f-416d-85f3-c8f61e657700")]
+        public readonly InputSlot<System.Numerics.Vector3> OrientationAxis = new InputSlot<System.Numerics.Vector3>();
 
-        [Input(Guid = "ef8d1fe2-8470-4113-8d20-40a92d0dab97")]
+        [Input(Guid = "555b3d2e-9496-4148-8563-1277c04aaec9")]
+        public readonly InputSlot<float> OrientationAngle = new InputSlot<float>();
+
+        [Input(Guid = "2b677db9-42b3-41af-a104-a6be69d0847b")]
         public readonly InputSlot<System.Numerics.Vector2> BiasAndGain = new InputSlot<System.Numerics.Vector2>();
+
+        [Input(Guid = "809e695e-755b-42a6-8b82-2b84e9c8ee0f")]
+        public readonly InputSlot<System.Numerics.Vector4> Color = new InputSlot<System.Numerics.Vector4>();
     }
 }
 
