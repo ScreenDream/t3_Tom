@@ -82,7 +82,7 @@ void main(uint3 i : SV_DispatchThreadID)
     float4 spin2 = qFromAngleAxis( angle, float3(Axis));
 
     ResultPoints[i.x].Position = v2 + Center + CenterOffset * f;
-    ResultPoints[i.x].Weight = (closeCircle && i.x == pointCount -1) ? NAN : 1.0;
+    ResultPoints[i.x].Weight1 = (closeCircle && i.x == pointCount -1) ? NAN : 1.0;
     ResultPoints[i.x].Size = PointScale + ScaleOffset * f;
     ResultPoints[i.x].Rotation = qMul(normalize(qMul(spin2, lookat)), spin);
     ResultPoints[i.x].Color = Color;

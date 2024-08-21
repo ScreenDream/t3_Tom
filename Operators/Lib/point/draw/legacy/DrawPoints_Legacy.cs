@@ -5,7 +5,7 @@ using T3.Core.Operator.Attributes;
 using T3.Core.Operator.Slots;
 using T3.Core.Utils;
 
-namespace lib.point.draw
+namespace lib.point.draw.legacy
 {
 	[Guid("ffd94e5a-bc98-4e70-84d8-cce831e6925f")]
     public class DrawPoints_Legacy : Instance<DrawPoints_Legacy>

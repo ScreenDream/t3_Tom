@@ -1,4 +1,4 @@
-#include "shared/point.hlsl"
+#include "shared/point-old.hlsl"
 #include "shared/quat-functions.hlsl"
 #include "shared/point-light.hlsl"
 
@@ -34,7 +34,7 @@ cbuffer Params : register(b2)
     float SegmentCount;
     float CutOffTransparent;
     float FadeNearest;
-    float UseSizeAttribute;
+    float UseWForSize;
 };
 
 cbuffer FogParams : register(b3)
@@ -80,7 +80,7 @@ psInput vsMain(uint id
     float tooCloseFactor = saturate(-posInCamera.z / FadeNearest - 1);
     output.color.a *= tooCloseFactor;
 
-    float sizeFactor = UseSizeAttribute > 0.5 ? length(pointDef.Size) : 1;
+    float sizeFactor = UseWForSize > 0.5 ? pointDef.W : 1;
 
     quadPosInCamera.xy += quadPos.xy * 0.10 * sizeFactor * Size;
     output.position = mul(quadPosInCamera, CameraToClipSpace);
