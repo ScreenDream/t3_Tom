@@ -1,17 +1,17 @@
 // Points are particles share the same structure and stride,
 // But some attributes change their meaning:
-//   Weight1 -> Radius
-//   Size -> Velocity
-//   Weight2 -> BirthTime
+//   W -> Radius
+//   Stretch -> Velocity
+//   Selected -> BirthTime
 
 struct Point
 {
     float3 Position;
-    float Weight1;
+    float W;
     float4 Rotation;
     float4 Color;
-    float3 Size;
-    float Weight2;
+    float3 Stretch;
+    float Selected;
 };
 
 struct Particle
