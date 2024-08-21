@@ -7,37 +7,37 @@ using T3.Core.Utils;
 
 namespace lib.point.draw
 {
-	[Guid("b063987b-f1e7-4dea-bda3-26b4f2ec28e3")]
-    public class DrawPoints : Instance<DrawPoints>
+	[Guid("ffd94e5a-bc98-4e70-84d8-cce831e6925f")]
+    public class DrawPoints_Legacy : Instance<DrawPoints_Legacy>
     {
-        [Output(Guid = "48776178-de4c-4e1b-8ee2-e1f628f1895d")]
+        [Output(Guid = "b73347d9-9d9f-4929-b9df-e2d6db722856")]
         public readonly Slot<Command> Output = new();
 
-        [Input(Guid = "b6f0edf9-f9dd-499a-bad7-7f97767f2447")]
+        [Input(Guid = "5df18658-ef86-4c0f-8bb4-4ac3fbbf9a33")]
         public readonly InputSlot<BufferWithViews> GPoints = new InputSlot<BufferWithViews>();
 
-        [Input(Guid = "15cb1fde-8194-4641-865f-f03c708c9d6b")]
+        [Input(Guid = "cc442161-e9ca-40ea-be3b-f87189d4e155")]
         public readonly InputSlot<System.Numerics.Vector4> Color = new InputSlot<System.Numerics.Vector4>();
 
-        [Input(Guid = "fa39eb26-af9a-4423-a9c6-8267a8f3e377")]
+        [Input(Guid = "414c8045-5086-4449-9d9a-03f28c3966b3")]
         public readonly InputSlot<float> Size = new InputSlot<float>();
 
-        [Input(Guid = "7692a7c9-97c6-4a0d-a318-2fd244606b41")]
-        public readonly InputSlot<bool> UseSizeAttribute = new InputSlot<bool>();
+        [Input(Guid = "d0a58cde-d292-4ceb-ba50-6965eb3ee3dd")]
+        public readonly InputSlot<bool> UseWForSize = new InputSlot<bool>();
 
-        [Input(Guid = "8f9f9511-9513-4f7c-a14e-8c8d3da72941", MappedType = typeof(SharedEnums.BlendModes))]
+        [Input(Guid = "8fab9161-48d4-43b0-a18f-5942b7071a49", MappedType = typeof(SharedEnums.BlendModes))]
         public readonly InputSlot<int> BlendMode = new InputSlot<int>();
 
-        [Input(Guid = "b2c46a56-71db-4de2-875b-32751d4656fa")]
+        [Input(Guid = "3fbad175-6060-40f2-a675-bdae20107698")]
         public readonly InputSlot<float> FadeNearest = new InputSlot<float>();
 
-        [Input(Guid = "9918a66a-07cf-4d53-8d46-3456682adab9")]
+        [Input(Guid = "814fc516-250f-4383-8f20-c2a358bbe4e1")]
         public readonly InputSlot<bool> EnableZWrite = new InputSlot<bool>();
 
-        [Input(Guid = "a5fb98a9-0414-4a2e-82b0-373f2cb71f6f")]
+        [Input(Guid = "7acc95ad-d317-42fc-97f8-85f48d7e516f")]
         public readonly InputSlot<bool> EnableZTest = new InputSlot<bool>();
 
-        [Input(Guid = "d628635d-35c6-424c-9387-171c56ade309")]
+        [Input(Guid = "850e3a32-11ba-4ad2-a2b1-6164f077ddd6")]
         public readonly InputSlot<Texture2D> Texture_ = new InputSlot<Texture2D>();
     }
 }
