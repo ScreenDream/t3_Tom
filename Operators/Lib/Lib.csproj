@@ -53,21 +53,6 @@
     <ItemGroup Label="Define json structure of referenced operator packages">
       <OpPacks Include="@(Operators)">
         <OpPackageInfoJson>
-    </ItemGroup>
-    <Target Name="CreatePackageInfo" AfterTargets="AfterBuild">
-        <ItemGroup Label="Define json structure of referenced operator packages">
-            <OpPacks Include="@(Operators)">
-                <OpPackageInfoJson>
-    </ItemGroup>
-    <Target Name="CreatePackageInfo" AfterTargets="AfterBuild">
-        <ItemGroup Label="Define json structure of referenced operator packages">
-            <OpPacks Include="@(Operators)">
-                <OpPackageInfoJson>
-    </ItemGroup>
-    <Target Name="CreatePackageInfo" AfterTargets="AfterBuild">
-        <ItemGroup Label="Define json structure of referenced operator packages">
-            <OpPacks Include="@(Operators)">
-                <OpPackageInfoJson>
                     {
                     "Identity": "%(Identity)",
                     "Version": "%(Version)",
