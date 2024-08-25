@@ -1,6 +1,5 @@
 #nullable enable
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -159,6 +158,17 @@ public static class RuntimeAssemblies
         return $"{versionPrefix.Major}.{versionPrefix.Minor}.{versionPrefix.Build}";
     }
 
+    public static bool Matches(this Version version, Version? other)
+    {
+        if(other == null)
+            return false;
+        
+        // check Major, Minor, and Build
+        return version.Major == other.Major 
+               && version.Minor == other.Minor 
+               && version.Build == other.Build;
+    }
+
     private struct AssemblyNameAndPath
     {
         public AssemblyName AssemblyName;
@@ -207,6 +217,7 @@ public record ReleaseInfoSerialized(
     string Version,
     OperatorPackageReferenceSerialized[] OperatorPackages);
 
+// Identity must equal that package's root namespace
 public sealed record OperatorPackageReference(string Identity, Version Version, bool ResourcesOnly);
 
 public sealed record ReleaseInfo(string AssemblyFileName, Guid HomeGuid, string RootNamespace, Version EditorVersion, Version Version, OperatorPackageReference[] OperatorPackages);

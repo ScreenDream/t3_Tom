@@ -9,7 +9,7 @@
     <Configurations>Debug;Release</Configurations>
     <Platforms>AnyCPU</Platforms>
     <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
-    <VersionPrefix>1.0.2</VersionPrefix>
+    <VersionPrefix>1.0.3</VersionPrefix>
     <HomeGuid>00000000-0000-0000-0000-000000000000</HomeGuid>
     <EditorVersion>3.9.1</EditorVersion>
   </PropertyGroup>
@@ -53,6 +53,21 @@
     <ItemGroup Label="Define json structure of referenced operator packages">
       <OpPacks Include="@(Operators)">
         <OpPackageInfoJson>
+    </ItemGroup>
+    <Target Name="CreatePackageInfo" AfterTargets="AfterBuild">
+        <ItemGroup Label="Define json structure of referenced operator packages">
+            <OpPacks Include="@(Operators)">
+                <OpPackageInfoJson>
+    </ItemGroup>
+    <Target Name="CreatePackageInfo" AfterTargets="AfterBuild">
+        <ItemGroup Label="Define json structure of referenced operator packages">
+            <OpPacks Include="@(Operators)">
+                <OpPackageInfoJson>
+    </ItemGroup>
+    <Target Name="CreatePackageInfo" AfterTargets="AfterBuild">
+        <ItemGroup Label="Define json structure of referenced operator packages">
+            <OpPacks Include="@(Operators)">
+                <OpPackageInfoJson>
                     {
                     "Identity": "%(Identity)",
                     "Version": "%(Version)",
