@@ -1,6 +1,6 @@
 # Install on Linux
 
-This guide covers running TiXL on Linux under Wine. Native Linux support is not yet available.
+This guide covers running TiXL on Linux under Wine. Native Linux support is currently in early alpha.
 
 ## Prerequisites
 
